@@ -1,47 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import SignUpPage from './pages/SignUpPage'
+import LogInPage from './pages/LogInPage'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
-function App() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
-
-  const handleRegister = async (e) => {
-    e.preventDefault()
-    const res =  await fetch('http://127.0.0.1:5000/register', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({email, password}),
-    })
-    const data = await res.json()
-    setMessage(data.message || data.error)
-  }
-
+ function App () {
   return (
-    <div className="app">
-      <h1>Register for Tellux!</h1>
-      <form onSubmit={handleRegister}>
-        <input 
-          type = 'email'
-          placeholder='Enter your email'
-          value={email}
-          onChange={(e)=> setEmail(e.target.value)}
-          required
-        />
-        <input 
-          type='password'
-          placeholder='Enter your password'
-          value={password}
-          onChange= {(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
-        {message && <p>{message}</p>}
-      </div> 
+   <Router>
+     <Routes>
+       <Route path="/" element={<SignUpPage />}/>
+       <Route path = "/login" element = {<LogInPage />} />
+       <Route path = "/signup" element = {<SignUpPage />} />
+     </Routes>
+   </Router>
   )
 }
 
 export default App
+
+
+
