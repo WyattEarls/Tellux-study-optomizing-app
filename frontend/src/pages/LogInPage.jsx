@@ -31,9 +31,9 @@ function LogInPage() {
         }
     }
 return(
-    <div className = 'w-full max-w-md bg-gray-800 p-8 md:p-10 rounded-xl shadow-2xl border border-gray-700 text-white'>
-        <h1 className = "text-4xl font-extrabold text-white mb-8 text-center">Welcome back to Tellux!</h1>
-        
+    <div className = "flex items-center justify-center h-screen bg-gray-800">
+        <h1 className = "text-4xl font-bold text-white mb-2">Welcome back to Tellux!</h1>
+        <p className = "text-gray-300">Your study schedule, solved.</p>
         {message && (
         <p className="mb-4 p-3 rounded text-sm text-red-300 bg-red-900 border border-red-700">
           {message}
@@ -41,14 +41,14 @@ return(
         )}
         
 
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <input
                 type = "email"
                 placeholder = "Enter your email"
                 value = {email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className = 'w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg placeholder-gray-400 focus:ring-amber-500 focus:border-amber-500 transition duration-150'
+                className = "p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
             <input 
             type = "password"
@@ -57,12 +57,11 @@ return(
             onChange = {(e) => setPassword (e.target.value)}
             required
             />
-            <button type="submit" className = 'w-full bg-amber-500 text-gray-900 py-3 rounded-lg font-bold hover:bg-amber-400 transition duration-200 shadow-xl focus:outline-none focus:ring-4 focus:ring-amber-500/50'
-        >Login</button>
-        </form>
+            <button type="submit" className = "bg-yellow-500 text-gray-900 font-bold py-3 rounded-lg hover:bg-yellow-600 transition"> Login </button>
+        </ form>
 
-        <p className="text-center text-sm mt-8 text-gray-300">
-        Don't have an account? 
+        <p className= 'text-center text-sm mt-8 text-gray-300'>
+        Don't have an account?
         <Link 
           to="/signup" 
           className="text-amber-500 font-semibold hover:text-amber-400 transition duration-150 ml-1"
